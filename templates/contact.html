@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% block content %}
+
+<style>
+  .contact-section {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: #333;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f8f8f8;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .contact-form textarea {
+    height: 120px;
+  }
+
+  .contact-form button {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="contact-section">
+  <h2>Contact Details</h2>
+  <p>Get in touch with us for any inquiries or support.</p>
+
+  <div class="contact-info">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Address</h4>
+        <p>123 Street, City, Country</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Email</h4>
+        <p>info@example.com</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Phone</h4>
+        <p>+123 456 7890</p>
+      </div>
+    </div>
+  </div>
+
+  <form class="contact-form">
+    <h4>Send us a message</h4>
+    <input type="text" name="name" placeholder="Your Name">
+    <input type="email" name="email" placeholder="Your Email">
+    <textarea name="message" placeholder="Your Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
+
+
+{% endblock %}

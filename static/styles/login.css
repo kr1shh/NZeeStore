@@ -1,0 +1,28 @@
+body {
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 100px;
+    }
+
+    .switch-btn {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .switch-btn a {
+      color: #4CAF50;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .hide {
+      display: none;
+    }

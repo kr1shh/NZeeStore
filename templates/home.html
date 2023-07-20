@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+{% block styles %}
+<style>
+    .jumbotron {
+      padding: 100px;
+    }
+
+    .jumbotron h1 {
+      font-size: 48px;
+    }
+
+    .jumbotron p {
+      font-size: 24px;
+    }
+
+    .product-card {
+      margin-bottom: 30px;
+    }
+
+    .product-card .card {
+      height: 100%;
+    }
+
+    .product-card .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card .card-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .product-card .card-price {
+      font-size: 16px;
+      color: #888;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+      <h1>Welcome to NZee Store</h1>
+      <p>Discover the best deals and shop from a wide range of products.</p>
+      <a class="btn btn-primary btn-lg" href="#products" role="button">Shop Now</a>
+    </div>
+<section id="products"></section>
+<div class="row" style="z-index:1;">
+  {% for product in products %}
+  <div class="col-md-4">
+    <div class="product-card">
+      <div class="card mt-4">
+        <img class="card-img-top" src="{{ product.image }}" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-price">₹{{ product.price }}</p>
+<!--          <a href="/add-cart-post" class="btn btn-primary">Add to Cart</a>-->
+          <form action="/add-cart-post" method="POST" style="display: inline;">
+                  <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                  <button type="submit" class="btn btn-sm btn-primary" >Add to Cart</button>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
+{% block scripts %}
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+{% endblock %}
+

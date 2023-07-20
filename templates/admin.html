@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin NZee Store</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      background-color: #343a40;
+      color: #fff;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+    .sidebar .nav-link {
+      color: #fff;
+      padding: 10px;
+    }
+    .sidebar .nav-link:hover {
+      background-color: #1d2124;
+    }
+    .main-content {
+      padding: 20px;
+    }
+    .main-content h1 {
+      margin-bottom: 20px;
+    }
+    .main-content p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .product-table {
+      margin-bottom: 30px;
+    }
+    .product-table th {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .product-table td {
+      font-size: 16px;
+    }
+    .product-table .product-actions {
+      white-space: nowrap;
+    }
+    .add-product-button {
+      margin-bottom: 20px;
+    }
+    .logout-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .user-name {
+      margin-top: 10px;
+      color: #fff;
+    }
+    .product-image {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 sidebar">
+        <h2>Admin Panel</h2>
+        <span class="user-name">{{ username }}</span>
+        <a href="/admin-logout" class="btn btn-primary logout-button">Logout</a>
+      </div>
+      <div class="col-md-9 main-content">
+<!--          <a href="/admin-orders" class="btn btn-primary logout-button">Orders</a>-->
+        {% block content %}
+        <h1>Dashboard</h1>
+        <table class="table product-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for product in products %}
+            <tr>
+<!--              <td style="display:none;">{{ product.product_id }}</td>-->
+              <td><img style="width:50px; height:50px;" class="product-image" src="{{ product.image }}" alt="{{ product.name }}"></td>
+              <td>{{ product.name }}</td>
+              <td>₹{{ product.price }}</td>
+              <td class="product-actions">
+                <form action="/delete-product-post" method="POST" style="display: inline;">
+                  <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                  <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <a href="/add-product" class="btn btn-primary add-product-button">Add Product</a>
+          {% endblock %}
+      </div>
+    </div>
+  </div>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

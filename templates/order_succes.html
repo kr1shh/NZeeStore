@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+  <div class="container">
+    <h1 class="mt-4">Order Success</h1>
+    <div class="alert alert-success mt-4">
+      <p>Your order has been placed successfully.</p>
+      <p>Order ID: {{ order_id.order_id }}</p>
+      <p>Thank you for your purchase!</p>
+    </div>
+    <a href="/orders" class="btn btn-primary mt-4">Go to Orders</a>
+  </div>
+{% endblock %}

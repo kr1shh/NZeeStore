@@ -1,0 +1,100 @@
+{% extends "index.html" %}
+
+{% block styles %}
+  <style>
+
+    .cart-item {
+      margin-bottom: 30px;
+      z-index:-1;
+    }
+
+    .cart-item .card {
+      height: 100%;
+    }
+
+    .cart-item .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .cart-item .card-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .cart-item .card-price {
+      font-size: 16px;
+      color: #888;
+    }
+
+    .cart-item .card-quantity {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .checkout-btn {
+      margin-top: 20px;
+    }
+  </style>
+  {% endblock %}
+{% block content %}
+    <h1 style="color:white;">Cart</h1>
+{% if products %}
+    <div class="row" style="z-index:1;">
+  {% for product in products %}
+  <div class="col-md-4">
+    <div class="product-card">
+      <div class="card mt-4">
+        <img class="card-img-top" src="{{ product.image }}" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-price">₹{{ product.price }}</p>
+          <form action="/rm-from-cart" method="POST" style="display: inline;">
+                  <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                  <button type="submit" class="btn btn-sm btn-danger" >Remove from Cart</button>
+                </form>
+            <form action="/check-out" method="POST" style="display: inline;">
+                <input type="hidden" name="product_price" value="{{ product.price }}">
+                <input type="hidden" name="product_name" value="{{ product.name }}">
+                <input type="hidden" name="product_img" value="{{ product.image }}">
+                  <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                  <button type="submit" class="btn btn-sm btn-success" >Proceed to checkout</button>
+                </form>
+<!--          <a href="/add-cart-post" class="btn btn-primary">Add to Cart</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!--    <form id="checkout-form" action="/check-out" method="POST">-->
+<!--      {% for product in products %}-->
+<!--        <input type="hidden" name="product_ids[]" value="{{ product.product_id }}">-->
+<!--      {% endfor %}-->
+<!--      <button type="submit" class="btn btn-primary checkout-btn mt-4">Proceed to Checkout</button>-->
+<!--    </form>-->
+ {% else %}
+    <!-- Show a message when the cart is empty -->
+    <h5>Your cart is empty.</h5>
+  {% endif %}
+{% endblock %}
+
+  {% block scripts %}
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--      $('#checkout-form').submit(function() {-->
+<!--        var productIds = [];-->
+<!--        $('[name="product_ids[]"]').each(function() {-->
+<!--          productIds.push($(this).val());-->
+<!--        });-->
+<!--        var productIdsString = productIds.join(',');-->
+<!--        $('<input>').attr({-->
+<!--          type: 'hidden',-->
+<!--          name: 'product_ids',-->
+<!--          value: productIdsString-->
+<!--        }).appendTo('#checkout-form');-->
+<!--      });-->
+<!--    });-->
+<!--  </script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  {% endblock %}

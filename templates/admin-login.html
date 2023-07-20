@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NZee Seller Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 100px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #343a40;
+    }
+    .login-container .form-group {
+      margin-bottom: 20px;
+    }
+    .login-container .btn-primary {
+      background-color: #343a40;
+      border-color: #343a40;
+    }
+    .login-container .btn-primary:hover {
+      background-color: #23282d;
+      border-color: #23282d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="login-container">
+          <h2>Admin Login</h2>
+          <form action="/admin-login-post" method="post">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+          <a href="/" class="text-dark text-justify">User login here!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

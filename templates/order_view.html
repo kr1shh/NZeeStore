@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block content %}
+  <div class="container">
+    <h1 class="mt-4" style="color:white;">Order Details</h1>
+
+
+    <table class="table">
+      <thead>
+        <tr style="color:white;">
+          <th>Product</th>
+          <th>Price</th>
+          <th>Preview</th>
+            <th>Address</th>
+            <th>Mobile</th>
+            <th>ZIP Code</th>
+            <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for order in orders %}
+        <tr>
+          <td>{{ order.name }}</td>
+          <td>₹{{ order.price }}</td>
+          <td><img src="{{ order.image }}" style="height:50px;width:50px;"></td>
+          <td>{{ order.address }}</td>
+          <td>{{ order.mobile }}</td>
+          <td>{{ order.zipcode }}</td>
+          <td>{{ order.status }}</td>
+          <td>
+            <form action="/cancel-order" method="POST" style="display: inline;">
+              <input type="hidden" name="order_id" value="{{ order.order_id }}">
+              <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to cancel this order?')">Cancel</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
